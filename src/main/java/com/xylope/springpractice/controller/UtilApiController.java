@@ -58,7 +58,10 @@ public class UtilApiController {
 
     @PostMapping("/print-request-data")
     public String printRequestData(@RequestBody AccountDto requestAccount) {
-        System.out.println(requestAccount.toString());
         return requestAccount.toString();
+    }
+
+    @PostMapping("/send-request-data")
+    public void sendRequestData(@RequestBody AccountDto requestAccount) {
     }
 }
