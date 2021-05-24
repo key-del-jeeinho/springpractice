@@ -40,17 +40,6 @@ public class UtilApiController {
         return sb.toString();
     }
 
-    /*
-    @GetMapping("/print-formatted-query-param")
-    public String printFormattedQueryParam(String name,
-    int age,
-    String hobby,
-    String sexual,
-    String email) {
-            return name + " / " + age + " / " + sexual + "\nhobby : " + hobby + "\nemail : " + email;
-    }
-     */
-
     @GetMapping("/print-formatted-query-param")
     public String printFormattedQueryParam(UserRequestDto dto) {
             return dto.toString();
@@ -63,5 +52,11 @@ public class UtilApiController {
 
     @PostMapping("/send-request-data")
     public void sendRequestData(@RequestBody AccountDto requestAccount) {
+        System.out.println(requestAccount);
+    }
+
+    @DeleteMapping("/delete/{userId}")
+    public void deleteUser(@PathVariable String userId, @RequestParam String account) {
+        System.out.println(userId + "\n" + account);
     }
 }
