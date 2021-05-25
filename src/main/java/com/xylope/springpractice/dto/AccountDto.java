@@ -6,14 +6,12 @@ import lombok.Getter;
 import lombok.Setter;
 
 @AllArgsConstructor
+@Getter @Setter
 public class AccountDto {
-    @Getter @Setter
     private String account;
-    @Getter @Setter
     private String email;
-    @Getter @Setter
     private String password;
-    @Getter @Setter @JsonProperty("phone_number")
+    @JsonProperty("phone_number")
     private String phoneNumber;
 
     @Override

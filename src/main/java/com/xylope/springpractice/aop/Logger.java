@@ -1,36 +1,38 @@
-package com.xylope.springpractice.aspect;
+package com.xylope.springpractice.aop;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
+import org.springframework.stereotype.Component;
 
+@Component
 @Aspect
 public class Logger {
-    @Pointcut("@annotation(Loggable)")
-    public void loggable() {}
+    @Pointcut("execution(* AspectExam.*())")
+    public void Loggable() {}
     
-    @Before("loggable()")
+    @Before("execution(* com.xylope.springpractice.aop.*.*())")
     public void beforeLogging() {
         System.out.println("before Logging...");
     }
 
-    @AfterReturning()
+    @AfterReturning("Loggable()")
     public void afterReturningLogging() {
         System.out.println("after returning Logging...");
     }
 
-    @AfterThrowing()
+    @AfterThrowing("Loggable()")
     public void afterThrowingLogging() {
         System.out.println("after throwing Logging...");
     }
 
-    @After("loggable()")
+    @After("Loggable()")
     public void afterLogging() {
         System.out.println("after Logging...");
     }
 
-    @Around("loggable()")
+    @Around("Loggable()")
     public Object aroundLogging(ProceedingJoinPoint pjp) throws Throwable {
-        System.out.println("around Logging...");
+        System.out.println("around Logging IS_STARTED");
         try {
             Object rs = pjp.proceed();
             System.out.println("around Logging IS_END");

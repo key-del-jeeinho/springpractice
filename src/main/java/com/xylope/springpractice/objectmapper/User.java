@@ -1,15 +1,13 @@
 package com.xylope.springpractice.objectmapper;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
 @Getter
+@Setter
 public class User {
     //@Getter -> getter를 사용할경우 이를 json 프로퍼티로 인식한다
     private static final User defaultUser = new User("홍길동", 0, "010-1234-5678");
