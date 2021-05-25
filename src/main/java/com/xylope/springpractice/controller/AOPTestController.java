@@ -8,11 +8,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StopWatch;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+import javax.validation.constraints.*;
+
+
 @RestController
 @RequestMapping("/aop")
 public class AOPTestController {
-    @Autowired
-    AspectExam exam;
+    @Autowired @NotNull
+    private AspectExam exam;
 
     @GetMapping("/test-log")
     public void testLogger() {
@@ -20,7 +24,10 @@ public class AOPTestController {
     }
 
     @GetMapping("/get-user/{name}")
-    public UserDto getUser(@PathVariable String name, @RequestParam Integer age, @RequestParam String email, @RequestParam String password) {
+    public UserDto getUser(@PathVariable String name,
+                           @RequestParam int age,
+                           @RequestParam String email,
+                           @RequestParam String password) {
         UserDto user = new UserDto();
         user.setUserName(name);
         user.setAge(age);
@@ -37,9 +44,9 @@ public class AOPTestController {
         return user;
     }
 
-    @Decode
+    //@Decode
     @PostMapping("/post-user")
-    public UserDto postUser(@RequestBody UserDto user) {
+    public UserDto postUser(@Valid @RequestBody UserDto user) {
         System.out.println("post method================================");
         System.out.println("post method - toString : " + user.toString());
         System.out.println("===========================================");
