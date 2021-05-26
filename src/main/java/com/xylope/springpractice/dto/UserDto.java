@@ -3,12 +3,11 @@ package com.xylope.springpractice.dto;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
+import com.xylope.springpractice.annotation.CustomValidate;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 
@@ -19,7 +18,7 @@ import javax.validation.constraints.NotEmpty;
 public class UserDto {
     @NotEmpty
     String userName;
-    @Min(1) @Max(100)
+    @CustomValidate(max = 200)
     int age;
     @NotBlank
     String email;

@@ -1,6 +1,5 @@
 package com.xylope.springpractice.controller;
 
-import com.xylope.springpractice.annotation.Decode;
 import com.xylope.springpractice.annotation.Timer;
 import com.xylope.springpractice.aop.AspectExam;
 import com.xylope.springpractice.dto.UserDto;
