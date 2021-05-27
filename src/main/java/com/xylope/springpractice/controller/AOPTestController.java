@@ -4,7 +4,10 @@ import com.xylope.springpractice.annotation.Timer;
 import com.xylope.springpractice.aop.AspectExam;
 import com.xylope.springpractice.dto.UserDto;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.util.StopWatch;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -64,5 +67,11 @@ public class AOPTestController {
         stopWatch.stop();
 
         System.out.println("total time in delete() : " + stopWatch.getTotalTimeMillis());
+    }
+
+    @ExceptionHandler(value = NumberFormatException.class)
+    public ResponseEntity numberFormatException(NumberFormatException e) {
+        System.out.println("테스트 성공!");
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
     }
 }
