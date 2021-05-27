@@ -18,7 +18,8 @@ import javax.validation.constraints.NotEmpty;
 public class UserDto {
     @NotEmpty
     String userName;
-    @CustomValidate(max = 200)
+    @NotEmpty
+    @CustomValidate()
     int age;
     @NotBlank
     String email;
